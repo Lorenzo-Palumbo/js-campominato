@@ -1,19 +1,20 @@
 var numeriGenerati = [];
 
-for (var i = 0; i < 16; i++) {
-    var numeroCasuale = generaRandomMinMax(1, 100);
-    numeriGenerati.push(numeroCasuale)
-}
-console.log(numeriGenerati);
-var numeroInserito = parseInt(prompt('Inserire numero'));
-var numeroControllato = controlloNumeri(numeriGenerati, numeroInserito)
 
-for (var i = 0; i < 84; i++) {
-    while (numeroControllato == true) {
-        var numeroInserito = parseInt(prompt('Inserire numero'));
+while (numeriGenerati.length < 16) {
+    var numeroCasuale = generaRandomMinMax(1, 100);
+    if (!numeriGenerati.includes(numeroCasuale)) {
+        numeriGenerati.push(numeroCasuale)
     }
 }
+console.log(numeriGenerati);
 
+
+var numeroInserito = parseInt(prompt('Inserire numero da 1 a 100'));
+var numeroControllato = controlloNumeri(numeriGenerati, numeroInserito)
+var numeriUtente = [];
+
+/*
 function controlloNumeri(listaNumeri, numero){
     var trovato = false;
     for (var i = 0; i < listaNumeri.length; i++) {
@@ -24,6 +25,15 @@ function controlloNumeri(listaNumeri, numero){
     return trovato
 }
 console.log(controlloNumeri(numeriGenerati, numeroInserito));
+*/
+
+function inserimentoInArrayNumeriUtente(){
+    while (numeriUtente.length < 84 || !numeriUtente.includes(numeroInserito)) {
+        var numeroInserito = parseInt(prompt('Inserire numero da 1 a 100'));
+        numeriUtente.push(numeroInserito);
+    }
+}
+
 
 function generaRandomMinMax(min, max){
     var numeroRandom = Math.floor(Math.random() * (max - min + 1)) + min;
